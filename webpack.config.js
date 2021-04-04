@@ -1,17 +1,12 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
-module.exports = {
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src", "index.html")
-    })
-  ],
+let config = {
   entry: { index: path.resolve(__dirname, "src", "index.js") },
   output: {
     path: path.resolve(__dirname, "dist")
   },
-  mode: 'development',
+
   module: {
     rules: [
       {
@@ -19,10 +14,28 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: ["babel-loader"]
-      }
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
     ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "src", "index.html"),
+    })
+  ],
+};
+
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    config.devtool = 'eval-cheap-module-source-map';
   }
+
+  return config;
 };
