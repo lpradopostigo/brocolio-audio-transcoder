@@ -1,0 +1,43 @@
+.nav {
+  height: 10vh;
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template: 1fr / 5% 1fr 5%;
+  z-index: 3;
+  background-color: black;
+}
+
+.menu {
+  display: flex;
+  align-self: center;
+  justify-content: space-around;
+  grid-area: 1 / 2 / 2 / 3;
+  color: white;
+}
+
+.item {
+  font-family: "Roboto", sans-serif;
+  list-style: none;
+  background: none;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.6rem;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.itemActive {
+  background: #ffd166;
+  border-radius: 20px;
+  width: 10ch;
+  color: black;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+}

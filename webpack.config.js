@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 let config = {
-  entry: { index: path.resolve(__dirname, "src", "index.js") },
+  entry: { index: path.resolve(__dirname, "src", "index.jsx") },
   output: {
     path: path.resolve(__dirname, "dist")
   },
@@ -14,9 +14,12 @@ let config = {
         use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-env", "@babel/preset-react"]
+        }
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -26,7 +29,7 @@ let config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src", "index.html"),
+      template: path.resolve(__dirname, "src", "static", "index.html"),
     })
   ],
 };
