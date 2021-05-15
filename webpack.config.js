@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 let config = {
-  entry: { index: path.resolve(__dirname, "src", "index.js") },
+  entry: { index: path.resolve(__dirname, "src", "index.jsx") },
   output: {
     path: path.resolve(__dirname, "dist")
   },
@@ -14,7 +14,7 @@ let config = {
         use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: "babel-loader",
         options: {
