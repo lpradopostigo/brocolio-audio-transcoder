@@ -16,7 +16,10 @@ let config = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        loader: "babel-loader",
+        options: {
+          presets: ["@babel/preset-env"]
+        }
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -26,7 +29,7 @@ let config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "src", "index.html"),
+      template: path.resolve(__dirname, "src", "static", "index.html"),
     })
   ],
 };
