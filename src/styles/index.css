@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .button {
+    @apply bg-black text-white p-2 block mx-auto w-min text-center  hover:bg-blue-600;
+  }
+}
+
+sl-progress-bar {
+  --indicator-color: #000;
+  --height: 0.5rem; /*h-2*/
+}
+
+sl-radio {
+  --sl-color-primary-400: #2563eb;
+
+  --sl-color-primary-500: #2563eb;
+
+  /* background-color: black; */
+  /* background-color: #2563eb; */
+}
